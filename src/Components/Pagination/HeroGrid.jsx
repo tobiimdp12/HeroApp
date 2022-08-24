@@ -1,21 +1,22 @@
-import React, { useEffect } from "react";
-import { useCounter } from "../../Hooks/useCounter";
+import React from "react";
 import Card from "../Card/Card";
+import { FaAngleDoubleRight,FaAngleDoubleLeft } from "react-icons/fa";
 
-function HeroGrid({
-  heroes,
-  currentPage,
-  totalPages,
-  NextHandler,
-  PrevHandler,
-}) {
-  const { counter, increment, decrement, reset } = useCounter(1);
+function HeroGrid({ heroes, counter, increment, decrement }) {
+  const TOTAL_PER_PAGE = 5;
 
-  useEffect(() => {}, [heroes]);
+  let totalPages = Math.ceil(heroes.length / TOTAL_PER_PAGE);
+  if (heroes.length === 0) totalPages = 1;
 
+  let currentHeroes = heroes.slice(
+    (counter - 1) * TOTAL_PER_PAGE,
+    (counter - 1) * TOTAL_PER_PAGE + TOTAL_PER_PAGE
+  );
+
+  console.log(currentHeroes);
   return (
     <>
-      <h1>
+      <h1 className="text-center">
         Pagina {counter} de {totalPages}
       </h1>
       <div className="flex justify-evenly items-center flex-wrap">
@@ -23,26 +24,26 @@ function HeroGrid({
           className="flex-shrink-0 px-3 py-1 bg-red-600 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out text-3xl"
           onClick={() => {
             decrement(1, 1);
-            PrevHandler();
           }}
         >
-          Back
+          <FaAngleDoubleLeft/>
         </button>
         <button
+      
+      
           className="flex-shrink-0 px-3 py-1 bg-green-600 text-white font-medium leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out text-3xl"
           onClick={() => {
             increment(1, totalPages);
-            NextHandler();
           }}
         >
-          Next
+          <FaAngleDoubleRight/>
         </button>
       </div>
 
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 ">
-        {heroes
-          ? heroes.map((hero) => {
-              return <li key={hero.id}>{hero.id}</li>;
+      <div className="w-full flex justify-around items-center flex-wrap mt-4 mb-48 ">
+        {currentHeroes
+          ? currentHeroes.map((hero) => {
+              return <Card  key={hero.id} hero={hero} />;
             })
           : "Loading"}
       </div>

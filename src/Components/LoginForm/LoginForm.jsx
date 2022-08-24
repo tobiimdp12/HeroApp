@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/context/AuthContext";
-import AnimatedPage from "../../Helpers/AnimatedPage";
 import { useForm } from "../../Hooks/useForm";
 import image from "../../Assets/reading.png";
 function LoginForm() {
@@ -24,8 +23,8 @@ function LoginForm() {
     });
   };
   return (
-    <AnimatedPage>
-      <section className="h-50 bg-orange-400 m-6 s MinHeight">
+    <>
+      <section className="h-50 bg-orange-400 m-6 s MinHeight animate__animated animate__fadeInBottomLeft">
         <div className="container px-6 py-12 h-full">
           <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
             <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
@@ -59,7 +58,7 @@ function LoginForm() {
           </div>
         </div>
       </section>
-    </AnimatedPage>
+    </>
   );
 }
 
