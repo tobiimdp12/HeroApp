@@ -17,7 +17,7 @@ function HeroGrid({ heroes, counter, increment, decrement }) {
   return (
     <>
       <h1 className="text-center">
-        Pagina {counter} de {totalPages}
+        Page {counter} of {totalPages}
       </h1>
       <div className="flex justify-evenly items-center flex-wrap">
         <button

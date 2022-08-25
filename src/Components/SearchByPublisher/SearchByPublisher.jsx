@@ -9,10 +9,11 @@ function SearchByPublisher() {
   const publishers = getPublishers();
   const { counter, increment, decrement, reset } = useCounter(1);
   const [heroes, setHeroes] = useState([]);
-  const { getHeroesByPublishers } = useHeroes();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get("publisher" || "");
   const navigate = useNavigate();
+  
+  const { getHeroesByPublishers } = useHeroes();
 
   const handleChange = (e) => {
     reset();
@@ -31,7 +32,7 @@ function SearchByPublisher() {
         <form className="w-full flex items-center  justify-center text-white">
           <select
             id="countries"
-            className="max-w-4xl my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="max-w-4xl my-3 bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={handleChange}
           >
             <option defaultValue>Choose a publisher</option>
