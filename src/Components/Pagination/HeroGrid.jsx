@@ -15,7 +15,7 @@ function HeroGrid({ heroes, counter, increment, decrement }) {
 
   console.log(currentHeroes);
   return (
-    <>
+    <div className="background">
       <h1 className="text-center">
         Page {counter} of {totalPages}
       </h1>
@@ -47,7 +47,7 @@ function HeroGrid({ heroes, counter, increment, decrement }) {
             })
           : "Loading"}
       </div>
-    </>
+    </div>
   );
 }
 

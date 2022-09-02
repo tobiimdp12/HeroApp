@@ -30,6 +30,8 @@ function SearchByName() {
     reset();
     console.log(heroname);
   };
+
+  
   console.log(heroes);
   return (
     <>
