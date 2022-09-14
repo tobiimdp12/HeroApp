@@ -1,7 +1,7 @@
 
 # Hero App
 
-Aplicacion para buscar un heroe utilizando la api de superhero
+Aplicacion para buscar heroes por nombre y/o publishers utilizando la api de superhero
 
 
 
