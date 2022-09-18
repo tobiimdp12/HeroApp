@@ -3,6 +3,7 @@ import HeroGrid from "../Pagination/HeroGrid";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useHeroes } from "../../Hooks/useHeroes";
 import { useCounter } from "../../Hooks/useCounter";
+import { useSelector } from "react-redux";
 
 function SearchByPublisher() {
   const { getPublishers } = useHeroes();
@@ -12,7 +13,7 @@ function SearchByPublisher() {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get("publisher" || "");
   const navigate = useNavigate();
-  
+  const { displayName } = useSelector((state) => state.auth);
   const { getHeroesByPublishers } = useHeroes();
 
   const handleChange = (e) => {
@@ -26,7 +27,7 @@ function SearchByPublisher() {
     <>
       <div className=" rounded overflow-hidden my-10 mx-auto animate__animated animate__bounceInDown">
         <h1 className="text-center text-5xl">
-          Welcome {JSON.parse(localStorage.getItem("user")).username}
+          Welcome {displayName}
         </h1>
 
         <form className="w-full flex items-center  justify-center text-white">

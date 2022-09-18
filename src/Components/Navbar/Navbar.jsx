@@ -1,16 +1,22 @@
 import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../auth/context/AuthContext";
-
+import { startLogout } from "../../store/auth/thunks";
 function Navbar() {
-  const { logged, logout } = useContext(AuthContext);
+  const { status } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const styles = ({ isActive }) =>
     `w-full focus:text-royal hover:text-royal justify-center inline-block text-center pt-2 pb-1 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-regal-blue duration-300 hover:text-white ${
       isActive ? "bg-regal-blue text-white scale-110 " : ""
     }`;
+
+  const onLogout = () => {
+    dispatch(startLogout());
+  };
   return (
     <>
-      {logged ? (
+      {status === "authenticated" ? (
         <section className="block fixed bottom-0 inset-x-0 z-50 shadow-lg text-black-800 bg-slate-100 dark:bg-dark backdrop-blur-lg bg-opacity-70  border-t-2 border-royal/20 ">
           <div id="tabs" className="flex justify-between">
             <NavLink to={"/"} className={styles}>
@@ -49,7 +55,7 @@ function Navbar() {
               <span className="tab block text-1xl">Publishers</span>
             </NavLink>
 
-            <NavLink to={"/login"} className={styles} onClick={logout}>
+            <NavLink to={"/login"} className={styles} onClick={onLogout}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 inline-block mb-1"

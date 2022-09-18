@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useHeroes } from "../../Hooks/useHeroes";
 import { useCounter } from "../../Hooks/useCounter";
 import { FaSearchengin } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 function SearchByName() {
   const navigate = useNavigate();
@@ -17,6 +18,9 @@ function SearchByName() {
   const { counter, increment, decrement, reset } = useCounter(1);
 
   const { getHeroByName } = useHeroes();
+
+  const { displayName } = useSelector((state) => state.auth);
+
 
   const { heroname } = formState;
 
@@ -36,7 +40,7 @@ function SearchByName() {
   return (
     <>
       <div className="rounded overflow-hidden my-10 mx-auto  animate__animated animate__bounceInLeft">
-        <h1 className="text-center text-5xl">Welcome {JSON.parse(localStorage.getItem("user")).username}</h1>
+        <h1 className="text-center text-5xl">Welcome {displayName}</h1>
         <form
           className="w-full flex items-center  justify-center text-white"
           onSubmit={onSubmitHandle}

@@ -7,8 +7,10 @@ import RouteManager from "./Router/RouteManager";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./auth/context/AuthProvider";
 function App() {
+
   return (
     <div className="dontLogged">
+      
       <AuthProvider>
         <BrowserRouter>
           <RouteManager />

@@ -8,6 +8,7 @@ import NotFound from "../Components/NotFound";
 import { PrivateRute } from "./PrivateRute";
 import { PublicRoute } from "./PublicRoute";
 import { HeroesProvider } from "../heroContext/HeroProvider";
+import RegisterForm from "../Components/RegisterForm/RegisterForm";
 
 function RouteManager() {
   return (
@@ -53,6 +54,14 @@ function RouteManager() {
             element={
               <PublicRoute>
                 <LoginForm />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <RegisterForm />
               </PublicRoute>
             }
           ></Route>

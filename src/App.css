@@ -19,11 +19,17 @@ html {
   scroll-behavior: smooth;
 }
 body {
-
   font-family: "Bebas Neue", cursive;
   font-size: 20px;
-  background: rgb(0,0,0);
-  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(6, 0, 60) 9%, rgb(0, 2, 144) 50%, rgba(26,0,0,1) 91%, rgba(0,0,0,1) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgb(6, 0, 60) 9%,
+    rgb(0, 2, 144) 50%,
+    rgba(26, 0, 0, 1) 91%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 h1,
@@ -33,6 +39,11 @@ p {
 }
 
 .MinHeight {
-  min-height: 100%;
+  height: 558px;
 }
 
+@media (max-width: 900px) {
+  .MinHeight {
+    height: 100%;
+  }
+}

@@ -1,14 +1,10 @@
-import React, { useContext } from 'react'
-import { Navigate } from 'react-router-dom'
-import { AuthContext } from '../auth/context/AuthContext'
+import React, { useContext } from "react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../auth/context/AuthContext";
 
+export const PrivateRute = ({ children }) => {
+  const { status } = useSelector((state) => state.auth);
 
-export const PrivateRute = ({children}) => {
-  
-    const { logged } = useContext(AuthContext)
-
-    return (logged)
-      ? children
-      : <Navigate to='/login' />
-  
-}
+  return status === "authenticated" ? children : <Navigate to="/login" />;
+};
